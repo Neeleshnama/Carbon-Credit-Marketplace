@@ -193,7 +193,7 @@ export default function SellNFT () {
         <label style={{color:'white'}}>
             <br />
           Auction End Time (Unix Timestamp):
-          <input type="number" value={formParams.auctionEndTime} onChange={e => updateFormParams({...formParams, auctionEndTime: e.target.value})} />
+          <input type="number" style={{color:'black'}} value={formParams.auctionEndTime} onChange={e => updateFormParams({...formParams, auctionEndTime: e.target.value})} />
         </label>
       )}
                 <br></br>

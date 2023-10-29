@@ -259,7 +259,9 @@ async function relistNFT(tokenId) {
                         Seller: <span className="text-sm">{data.seller}</span>
                     </div>
                     <div>
-                        Auction End: <span className="text-sm"> <strong>{date}</strong></span>
+                         Auction End:{ data.auction &&( <span className="text-sm"> <strong>{date}</strong></span>)}
+                         {!data.auction && ( <span className="text-sm"> <strong>not listed for auction</strong></span>)}
+                       
                     </div>
                     <div>
                     {!data.auction &&( currAddress != data.owner && currAddress != data.seller ?

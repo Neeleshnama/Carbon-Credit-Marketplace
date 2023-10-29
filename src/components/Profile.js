@@ -80,23 +80,23 @@ export default function Profile () {
             <Navbar></Navbar>
             <div className="profileClass">
             <div className="flex text-center flex-col mt-11 md:text-2xl text-white">
-                <div className="mb-5">
+                <div className="mb-5" style={{border:'2px solid red',borderRadius:'5px',width:'30%',position:'relative',left:'34%'}}>
                     <h2 className="font-bold">Wallet Address</h2>  
                     {address}
                 </div>
             </div>
             <div className="flex flex-row text-center justify-center mt-10 md:text-2xl text-white">
-                    <div>
-                        <h2 className="font-bold">No. of NFTs</h2>
+                    <div style={{border:'2px solid white',borderRadius:'5px'}}>
+                        <h2 className="font-bold">No. of Credits</h2>
                         {data.length}
                     </div>
-                    <div className="ml-20">
+                    <div className="ml-20" style={{border:'2px solid white',borderRadius:'5px'}}>
                         <h2 className="font-bold">Total Value</h2>
                         {totalPrice} ETH
                     </div>
             </div>
             <div className="flex flex-col text-center items-center mt-11 text-white">
-                <h2 className="font-bold">Your NFTs</h2>
+                <h2 className="font-bold">Your Credits</h2>
                 <div className="flex justify-center flex-wrap max-w-screen-xl">
                     {data.map((value, index) => {
                     return <NFTTile data={value} key={index}></NFTTile>;
