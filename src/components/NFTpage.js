@@ -284,6 +284,7 @@ async function relistNFT(tokenId) {
           <br />
           <button style={{backgroundColor:'red',border:'2px solid black',borderRadius:'5px',color:'black'}} onClick={handlePlaceBid}>Place Bid</button>
         </div> : <div className="text-emerald-700"> Bid completed You are the owner of this NFT or you can't buy your own nft <br />
+       <p style={{color:'white'}}>Purchased in : {currentBid} Ether</p> 
         </div>
                          
       )}

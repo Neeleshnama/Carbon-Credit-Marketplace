@@ -181,16 +181,16 @@ export default function SellNFT () {
                     <input type={"file"} onChange={OnChangeFile}></input>
                 </div>
                 {/* //auction related */}
-                <label>
+                <label style={{color:'white'}}>
         Listing Type:
-        <select onChange={e =>updateFormParams({...formParams, auction:e.target.value })} >
-          <option value={''} >fix</option>
-          <option  value={true} >auction</option>
+        <select  style={{color:'black'}} onChange={e =>updateFormParams({...formParams, auction:e.target.value })} >
+          <option  style={{color:'black'}} value={''} >fix</option>
+          <option style={{color:'black'}} value={true} >auction</option>
         </select>
       </label>
       {formParams.auction && (
         
-        <label>
+        <label style={{color:'white'}}>
             <br />
           Auction End Time (Unix Timestamp):
           <input type="number" value={formParams.auctionEndTime} onChange={e => updateFormParams({...formParams, auctionEndTime: e.target.value})} />

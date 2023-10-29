@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
+import "../stylenavbar.css";
 
 function Navbar() {
 
@@ -73,17 +74,17 @@ async function connectWebsite() {
 
     return (
       <div className="">
-        <nav className="w-screen">
+        <nav className="w-screen navbar">
           <ul className='flex items-end justify-between py-3 bg-transparent text-white pr-5'>
           <li className='flex items-end ml-5 pb-2'>
             <Link to="/">
             <img src={fullLogo} alt="" width={120} height={120} className="inline-block -mt-2"/>
-            <div className='inline-block font-bold italic text-2xl ml-2 text-orange-700'>
+            <div className='inline-block font-bold italic text-2xl ml-2 text-white'>
               Carbon Credit  Marketplace
             </div>
             </Link>
           </li>
-          <li className='w-2/6'>
+          <li className='w-2/6 inside'>
             <ul className='lg:flex justify-between font-bold mr-10 text-lg'>
               {location.pathname === "/" ? 
               <li className='border-b-2  bg-gradient-to-r from-purple-500 to-white-500 text-black-700 rounded-xl hover:pb-0 p-2'>
@@ -112,7 +113,7 @@ async function connectWebsite() {
                 <Link to="/profile">Track Credits</Link>
               </li>              
               }  
-              <li>
+              <li className='wallet'>
                 <button className="enableEthereumButton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm" onClick={connectWebsite}>{connected? "Connected":"Connect Wallet"}</button>
               </li>
             </ul>

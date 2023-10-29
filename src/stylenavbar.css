@@ -1,0 +1,20 @@
+.navbar .inside ul{
+    margin-right: 200px !important;
+    justify-content: center !important;
+    position: relative;
+   right: 53%;
+}
+
+.navbar .inside ul li{
+    margin-right: 80px;
+    padding-right: 40px;
+    
+
+}
+.navbar .inside ul .wallet{
+    position: relative !important;
+    right: -89% !important;
+    
+    
+
+}

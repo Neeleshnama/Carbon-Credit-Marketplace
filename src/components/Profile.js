@@ -2,14 +2,16 @@ import Navbar from "./Navbar";
 import { useLocation, useParams } from 'react-router-dom';
 import MarketplaceJSON from "../Marketplace.json";
 import axios from "axios";
-import { useState } from "react";
+import { useState ,useEffect } from "react";
 import NFTTile from "./NFTTile";
+
 
 export default function Profile () {
     const [data, updateData] = useState([]);
     const [dataFetched, updateFetched] = useState(false);
     const [address, updateAddress] = useState("0x");
     const [totalPrice, updateTotalPrice] = useState("0");
+    const [currentBid, setCurrentBid] = useState(0);
 
     async function getNFTData(tokenId) {
         const ethers = require("ethers");
@@ -21,6 +23,9 @@ export default function Profile () {
 
         //Pull the deployed contract instance
         let contract = new ethers.Contract(MarketplaceJSON.address, MarketplaceJSON.abi, signer)
+        // updating the part to fetch bid amount
+        
+       // console.log(etherAmount)
 
         //create an NFT Token
         let transaction = await contract.getMyNFTs()
@@ -36,6 +41,9 @@ export default function Profile () {
             meta = meta.data;
 
             let price = ethers.utils.formatUnits(i.price.toString(), 'ether');
+            let currentBidAmount = await contract.getCurrentBid(i.tokenId);
+            let currentBidInEth = ethers.utils.formatUnits(currentBidAmount.toString(), 'ether');
+
             let item = {
                 price,
                 tokenId: i.tokenId.toNumber(),
@@ -44,16 +52,23 @@ export default function Profile () {
                 image: meta.image,
                 name: meta.name,
                 description: meta.description,
+                currentBid: currentBidInEth,
+
+                
             }
-            sumPrice += Number(price);
+
+            sumPrice += (Number(price) + Number(currentBidInEth));
+            
             return item;
         }))
 
         updateData(items);
         updateFetched(true);
         updateAddress(addr);
-        updateTotalPrice(sumPrice.toPrecision(3));
+        updateTotalPrice(sumPrice.toPrecision(2));
     }
+
+    
 
     const params = useParams();
     const tokenId = params.tokenId;
